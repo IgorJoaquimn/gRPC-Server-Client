@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package store;
+
+// Service definition
+service StoreService {
+    // Reads the balance of a wallet
+    rpc ReadPrice (ReadPriceRequest) returns (ReadPriceResponse);
+
+    // Creates a payment order
+    rpc Sell (SellRequest) returns (SellResponse);
+
+    // Ends execution and returns pending orders
+    rpc EndExecution (EndExecutionRequest) returns (EndExecutionResponse);
+}
+
+// Message definitions
+
+// Request message for ReadPrice
+message ReadPriceRequest {}
+
+// Response message for ReadPrice
+message ReadPriceResponse {
+    int32 price = 1;
+}
+
+// Request message for Sell
+message SellRequest {
+    int32 order_id = 1;
+}
+
+// Response message for Sell
+message SellResponse {
+    int32 status = 1;
+}
+
+// Request message for EndExecution
+message EndExecutionRequest {}
+
+// Response message for EndExecution
+message EndExecutionResponse {
+    int32 status = 1;
+}
+

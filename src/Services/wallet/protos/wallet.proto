@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package wallet;
+
+// Service definition
+service WalletService {
+    // Reads the balance of a wallet
+    rpc ReadBalance (ReadBalanceRequest) returns (ReadBalanceResponse);
+
+    // Creates a payment order
+    rpc CreatePaymentOrder (CreatePaymentOrderRequest) returns (CreatePaymentOrderResponse);
+
+    // Transfers funds based on a payment order
+    rpc Transfer (TransferRequest) returns (TransferResponse);
+
+    // Ends execution and returns pending orders
+    rpc EndExecution (EndExecutionRequest) returns (EndExecutionResponse);
+}
+
+// Message definitions
+
+// Request message for ReadBalance
+message ReadBalanceRequest {
+    string wallet = 1;
+}
+
+// Response message for ReadBalance
+message ReadBalanceResponse {
+    int32 value = 1;
+}
+
+// Request message for CreatePaymentOrder
+message CreatePaymentOrderRequest {
+    string wallet = 1;
+    int32 value = 2;
+}
+
+// Response message for CreatePaymentOrder
+message CreatePaymentOrderResponse {
+    int32 status = 1;
+    int32 order_id = 2;
+}
+
+// Request message for Transfer
+message TransferRequest {
+    int32 order_id = 1;
+    int32 conference_value = 2;
+    string wallet = 3;
+}
+
+// Response message for Transfer
+message TransferResponse {
+    int32 status = 1;
+}
+
+// Request message for EndExecution
+message EndExecutionRequest {}
+
+// Response message for EndExecution
+message EndExecutionResponse {
+    repeated WalletBalance wallet_balances = 1;
+    int32 pending_orders_count = 2;
+}
+
+// Message for wallet balances
+message WalletBalance {
+    string wallet = 1;
+    int32 value = 2;
+}
