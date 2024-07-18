@@ -34,19 +34,19 @@ stubs:
 	$(PROTOC) -I=$(SERVICES_DIR)/wallet/protos --python_out=$(SERVICES_DIR)/wallet/protos --grpc_python_out=$(SERVICES_DIR)/wallet/protos $(WALLET_PROTO)
 
 # Run server for wallet service
-run_serv_banco: stubs
-	python3 $(SERVICES_DIR)/wallet/server/server.py
+run_serv_banco: wallet
+	python3 $(SERVICES_DIR)/wallet/server/server.py $(arg1)
 
 # Run client for wallet service
-run_cli_banco: stubs
-	python3 $(SERVICES_DIR)/wallet/client/client.py
+run_cli_banco: wallet
+	python3 $(SERVICES_DIR)/wallet/client/client.py $(arg1) $(arg2)
 
 # Run server for store service
-run_serv_loja: stubs
+run_serv_loja: store
 	python3 $(SERVICES_DIR)/store/server/server.py
 
 # Run client for store service
-run_cli_loja: stubs
+run_cli_loja: store
 	python3 $(SERVICES_DIR)/store/client/client.py
 
 .PHONY: all store wallet clean stubs run_serv_banco run_cli_banco run_serv_loja run_cli_loja

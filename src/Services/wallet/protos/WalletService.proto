@@ -38,7 +38,6 @@ message CreatePaymentOrderRequest {
 // Response message for CreatePaymentOrder
 message CreatePaymentOrderResponse {
     int32 status = 1;
-    int32 order_id = 2;
 }
 
 // Request message for Transfer
