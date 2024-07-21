@@ -33,5 +33,7 @@ class WalletService(WalletService_pb2_grpc.WalletServicer):
 
     def EndExecution(self, request, context):
         # WalletService_pb2.EndExecutionResponse
+        del self.m
+
         self._stop_event.set()
-        return WalletService_pb2.ShutdownResponse()
+        return WalletService_pb2.EndExecutionResponse()

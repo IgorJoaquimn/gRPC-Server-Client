@@ -43,10 +43,10 @@ run_cli_banco: wallet
 
 # Run server for store service
 run_serv_loja: store
-	python3 $(SERVICES_DIR)/store/server/server.py
+	python3 $(SERVICES_DIR)/store/server/server.py $(arg1) $(arg2) $(arg3) $(arg4)
 
 # Run client for store service
 run_cli_loja: store
-	python3 $(SERVICES_DIR)/store/client/client.py
+	python3 $(SERVICES_DIR)/store/client/client.py $(arg1) $(arg2) $(arg3)
 
 .PHONY: all store wallet clean stubs run_serv_banco run_cli_banco run_serv_loja run_cli_loja

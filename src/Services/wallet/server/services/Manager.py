@@ -42,3 +42,7 @@ class Manager():
             del self.orders[order]
         # em caso de sucesso, retorna zero;
         return 0
+
+    def __del__(self):
+        for (k,v) in self.wallets.items():
+            print(k,v)

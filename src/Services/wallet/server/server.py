@@ -19,6 +19,7 @@ def read_command_line(stop_event):
                m.m.wallets[identifier] = int(value)
    except EOFError:
       pass
+
    return m
 
 def serve():
@@ -31,13 +32,10 @@ def serve():
    server.add_insecure_port(f'localhost:{sys.argv[1]}')
    server.start()
    stop_event.wait()
-   server.stop()
+   server.stop(None)
    
 if __name__ == '__main__':
    if len(sys.argv) != 2:
       print("make run_serve_banco arg1=<número do porto>")
       sys.exit(1)
-
-
-   print(f"Serving on localhost:{sys.argv[1]}...")
    serve()
