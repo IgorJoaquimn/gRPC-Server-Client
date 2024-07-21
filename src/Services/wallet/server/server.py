@@ -2,14 +2,15 @@ import os
 import sys
 import grpc
 from concurrent import futures 
+import threading
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../protos')))
 
 import WalletService_pb2_grpc
 from services.WalletService import WalletService
 
-def read_command_line():
-   m = WalletService()
+def read_command_line(stop_event):
+   m = WalletService(stop_event)
    try:
         while True:
             line = input()
@@ -22,13 +23,15 @@ def read_command_line():
 
 def serve():
    # O servidor usa um modelo de pool de threads do pacote concurrent
+   stop_event = threading.Event()
    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
    # O servidor precisa ser ligado ao objeto que identifica os
    #   procedimentos a serem executados.
-   WalletService_pb2_grpc.add_WalletServicer_to_server(read_command_line(), server)
+   WalletService_pb2_grpc.add_WalletServicer_to_server(read_command_line(stop_event), server)
    server.add_insecure_port(f'localhost:{sys.argv[1]}')
    server.start()
-   server.wait_for_termination()
+   stop_event.wait()
+   server.stop()
    
 if __name__ == '__main__':
    if len(sys.argv) != 2:
@@ -36,5 +39,5 @@ if __name__ == '__main__':
       sys.exit(1)
 
 
-   print("Serving...")
+   print(f"Serving on localhost:{sys.argv[1]}...")
    serve()

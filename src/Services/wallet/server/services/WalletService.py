@@ -8,8 +8,9 @@ import WalletService_pb2
 from Manager import Manager
 
 class WalletService(WalletService_pb2_grpc.WalletServicer):
-    def __init__(self) -> None:
+    def __init__(self, stop_event):
         super().__init__()
+        self._stop_event = stop_event
         self.m = Manager()
 
     def ReadBalance(self, request, context):
@@ -32,4 +33,5 @@ class WalletService(WalletService_pb2_grpc.WalletServicer):
 
     def EndExecution(self, request, context):
         # WalletService_pb2.EndExecutionResponse
-        return None
+        self._stop_event.set()
+        return WalletService_pb2.ShutdownResponse()
