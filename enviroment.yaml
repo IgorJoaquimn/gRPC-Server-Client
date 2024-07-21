@@ -1,0 +1,35 @@
+name: /home/igo/faculdade/7-periodo/FSPD/gRPC-Server-Client/env
+channels:
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=main
+  - _openmp_mutex=5.1=1_gnu
+  - abseil-cpp=20230802.0=h6a678d5_2
+  - c-ares=1.19.1=h5eee18b_0
+  - ca-certificates=2024.7.2=h06a4308_0
+  - grpc-cpp=1.48.2=he1ff14a_4
+  - grpcio=1.48.2=py38he1ff14a_4
+  - grpcio-tools=1.16.1=py38h2531618_0
+  - gtest=1.14.0=hdb19cb5_1
+  - ld_impl_linux-64=2.38=h1181459_1
+  - libffi=3.4.4=h6a678d5_1
+  - libgcc-ng=11.2.0=h1234567_1
+  - libgomp=11.2.0=h1234567_1
+  - libprotobuf=3.20.3=he621ea3_0
+  - libstdcxx-ng=11.2.0=h1234567_1
+  - ncurses=6.4=h6a678d5_0
+  - openssl=3.0.14=h5eee18b_0
+  - pip=24.0=py38h06a4308_0
+  - python=3.8.19=h955ad1f_0
+  - re2=2022.04.01=h295c915_0
+  - readline=8.2=h5eee18b_0
+  - setuptools=69.5.1=py38h06a4308_0
+  - six=1.16.0=pyhd3eb1b0_1
+  - sqlite=3.45.3=h5eee18b_0
+  - tk=8.6.14=h39e8969_0
+  - wheel=0.43.0=py38h06a4308_0
+  - xz=5.4.6=h5eee18b_1
+  - zlib=1.2.13=h5eee18b_1
+  - pip:
+      - protobuf==3.20.1
+prefix: /home/igo/faculdade/7-periodo/FSPD/gRPC-Server-Client/env
