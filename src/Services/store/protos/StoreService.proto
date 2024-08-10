@@ -3,7 +3,7 @@ syntax = "proto3";
 package store;
 
 // Service definition
-service StoreService {
+service Store {
     // Reads the balance of a wallet
     rpc ReadPrice (ReadPriceRequest) returns (ReadPriceResponse);
 

@@ -29,7 +29,6 @@ def run():
     if len(sys.argv) != 3:
         print("Uso: python client.py <id_carteira> <endereço_servidor>")
         sys.exit(1)
-        
     client_id = sys.argv[1]
     server_address = sys.argv[2]
 
