@@ -13,7 +13,6 @@ def serve():
    port = sys.argv[2]
    my_id = sys.argv[3]
    wallet_addr = sys.argv[4]
-   print("Serving")
    # O servidor usa um modelo de pool de threads do pacote concurrent
    stop_event = threading.Event()
    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
@@ -27,6 +26,6 @@ def serve():
    
 if __name__ == '__main__':
    if len(sys.argv) != 5:
-      print("ERROR make run_serv_loja arg1=10 arg2=6666 arg3=Papai_Noel arg4=localhost:5555")
+      print("Uso: make run_serv_loja arg1=10 arg2=6666 arg3=Papai_Noel arg4=localhost:5555")
       sys.exit(1)
    serve()

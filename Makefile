@@ -27,6 +27,8 @@ wallet:
 clean:
 	rm -f $(STORE_OUTPUT)/*_pb2*.py
 	rm -f $(WALLET_OUTPUT)/*_pb2*.py
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+
 
 # Generate stubs in Python
 stubs:

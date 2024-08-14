@@ -39,6 +39,7 @@ message EndExecutionRequest {}
 
 // Response message for EndExecution
 message EndExecutionResponse {
-    int32 status = 1;
+    int32 balance = 1;
+    int32 status = 2;
 }
 

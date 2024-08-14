@@ -19,7 +19,7 @@ def process_command(command, wallet_stub,store_stub, client_id,product_price):
 
 def run():
     if len(sys.argv) != 4:
-        print("Erro make run_cli_loja arg1=Dorgival arg2=localhost:5555 arg3=localhost:6666")
+        print("Uso: make run_cli_loja arg1=Dorgival arg2=localhost:5555 arg3=localhost:6666")
         sys.exit(1)
 
     client_id   = sys.argv[1]

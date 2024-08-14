@@ -38,7 +38,6 @@ def run():
     # Cria um canal para se conectar ao servidor gRPC
     with grpc.insecure_channel(server_address) as channel:
         stub = WalletService_pb2_grpc.WalletStub(channel)
-        # print("Running...")
 
         try:
             while True:

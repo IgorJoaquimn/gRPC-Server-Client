@@ -16,11 +16,10 @@ class Manager():
             return -1
 
         #se o valor a ser debitado é maior que o saldo na carteira, retorna -2.
-        v = self.wallets[wallet]
-        if(v < value):
+        if(self.wallets[wallet] < value):
             return -2
         
-        self.wallets[wallet] -= v
+        self.wallets[wallet] -= value
         #em caso de sucesso, retorna o inteiro identificador da ordem
         self.ordem_id+=1
         self.orders[self.ordem_id] = (wallet,value)
@@ -33,7 +32,6 @@ class Manager():
             return -1
         # se o valor da ordem difere do valor de conferência, retorna -2; 
         if(self.orders[order][1] != conference):
-            print(self.orders,conference)
             return -2
         # se a string não corresponde a uma carteira existente, retorna -3.
         if(wallet not in self.wallets):
