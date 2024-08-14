@@ -20,7 +20,7 @@ def read_command_line(stop_event):
    """
    wallet_service = WalletService(stop_event)
    try:
-      for line in iter(input, ''):
+      for line in sys.stdin:
          identifier, value = line.split()
          wallet_service.m.wallets[identifier] = int(value)
    except EOFError:

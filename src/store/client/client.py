@@ -57,9 +57,9 @@ def run():
         store_stub      = StoreService_pb2_grpc.StoreStub(channel_store)
         product_price   = get_price(store_stub)
 
+        
         try:
-            while True:
-                line = input()
+            for line in sys.stdin:
                 if not line: continue
                 if process_command(line, wallet_stub, store_stub, client_id, product_price): break
         except EOFError:

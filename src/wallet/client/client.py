@@ -57,12 +57,9 @@ def run():
         stub = WalletService_pb2_grpc.WalletStub(channel)
 
         try:
-            while True:
-                line = input()
-                if not line:
-                    continue
-                if process_command(line, stub, client_id):
-                    break
+            for line in sys.stdin:
+                if not line: continue
+                if process_command(line, stub, client_id): break
         except EOFError:
             pass
 
