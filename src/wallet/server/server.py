@@ -41,7 +41,7 @@ def serve():
    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
    WalletService_pb2_grpc.add_WalletServicer_to_server(read_command_line(stop_event), server)
    # Vincula o servidor à porta especificada pelo argumento da linha de comando.
-   server.add_insecure_port(f'localhost:{sys.argv[1]}')
+   server.add_insecure_port(f'0.0.0.0:{sys.argv[1]}')
    server.start()
    # Aguarda até que o stop_event seja acionado, o que indicará que o servidor deve parar.
    stop_event.wait()

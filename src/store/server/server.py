@@ -33,7 +33,7 @@ def serve():
       StoreService(stop_event, product_price, my_id, wallet_addr), server
    )
    # Vincula o servidor à porta especificada.
-   server.add_insecure_port(f'localhost:{port}')
+   server.add_insecure_port(f'0.0.0.0:{port}')
    server.start()
    # Aguarda até que o stop_event seja acionado, o que indicará que o servidor deve parar.
    stop_event.wait()
