@@ -4,8 +4,7 @@ import grpc
 from concurrent import futures 
 import threading
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../protos')))
-
+sys.path.insert(0, os.path.abspath("src/protos"))
 import StoreService_pb2_grpc
 from services.StoreService import StoreService
 

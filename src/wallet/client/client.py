@@ -3,9 +3,12 @@ import os
 import sys
 import grpc
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../protos')))
+sys.path.insert(0, os.path.abspath("src/protos"))
 import WalletService_pb2_grpc
 from services.calls import *
+
+
+opag = None
 
 def process_command(command, stub, client_id):
     parts = command.split()

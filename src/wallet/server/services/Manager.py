@@ -19,7 +19,8 @@ class Manager():
         v = self.wallets[wallet]
         if(v < value):
             return -2
-
+        
+        self.wallets[wallet] -= v
         #em caso de sucesso, retorna o inteiro identificador da ordem
         self.ordem_id+=1
         self.orders[self.ordem_id] = (wallet,value)
@@ -32,14 +33,14 @@ class Manager():
             return -1
         # se o valor da ordem difere do valor de conferência, retorna -2; 
         if(self.orders[order][1] != conference):
+            print(self.orders,conference)
             return -2
         # se a string não corresponde a uma carteira existente, retorna -3.
         if(wallet not in self.wallets):
             return -3
         # em caso de sucesso, retorna zero depois de remover a ordem de pagamento indicada e fazer a transferência do valor associado para a carteira identificada (string), sendo que, como controle, verifica primeiro se a ordem possui o valor fornecido para conferência;
-        if(conference < self.wallets[wallet]):
-            self.wallets[wallet] -= conference
-            del self.orders[order]
+        self.wallets[wallet] += conference
+        del self.orders[order]
         # em caso de sucesso, retorna zero;
         return 0
 

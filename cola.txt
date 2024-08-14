@@ -1,4 +1,4 @@
-make run_serv_banco arg1=5555 < tests/loja.txt 
-make run_cli_banco arg1=Papai_Noel arg2=localhost:5555 < tests/cliente_loja.txt 
+make run_serv_banco arg1=5555 < tests/servidor_banco.txt 
+make run_cli_banco arg1=Papai_Noel arg2=localhost:5555 < tests/cliente_banco.txt 
 make run_serv_loja arg1=10 arg2=6666 arg3=Papai_Noel arg4=localhost:5555
 make run_cli_loja arg1=Dorgival arg2=localhost:5555 arg3=localhost:6666

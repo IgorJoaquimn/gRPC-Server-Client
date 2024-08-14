@@ -3,9 +3,7 @@ import os
 import sys
 import grpc
 
-sys.path.insert(0, os.path.abspath("src/Services/wallet/protos"))
-sys.path.insert(0, os.path.abspath("src/Services/store/protos"))
-
+sys.path.insert(0, os.path.abspath("src/protos"))
 import WalletService_pb2_grpc
 import StoreService_pb2_grpc
 from services.calls import *

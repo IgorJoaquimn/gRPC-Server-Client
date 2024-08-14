@@ -12,13 +12,12 @@ def buy_product(store_stub,wallet_stub,client_id,product_price):
     status  = create_payment_order(wallet_stub,client_id,product_price)
     request = StoreService_pb2.SellRequest(order_id = status)
     response = store_stub.Sell(request)
-    print("Resp",response)
+    print("Resp",status,response)
 
 
 def create_payment_order(stub, client_id, value):
     request = WalletService_pb2.CreatePaymentOrderRequest(wallet=client_id, value=value)
     response = stub.CreatePaymentOrder(request)
-    print(response.status)
     return response.status
 
 def finish_server(store_stub, wallet_stub):

@@ -1,11 +1,11 @@
 # Define directories
-SERVICES_DIR := src/Services
-STORE_PROTO := $(SERVICES_DIR)/store/protos/StoreService.proto
-WALLET_PROTO := $(SERVICES_DIR)/wallet/protos/WalletService.proto
+SERVICES_DIR := src
+STORE_PROTO := $(SERVICES_DIR)/protos/StoreService.proto
+WALLET_PROTO := $(SERVICES_DIR)/protos/WalletService.proto
 
 # Define output directories
-STORE_OUTPUT := $(SERVICES_DIR)/store/protos
-WALLET_OUTPUT := $(SERVICES_DIR)/wallet/protos
+STORE_OUTPUT := $(SERVICES_DIR)/protos
+WALLET_OUTPUT := $(SERVICES_DIR)/protos
 
 # Define proto compiler and gRPC plugin
 PROTOC := python3 -m grpc_tools.protoc
@@ -17,11 +17,11 @@ all: store wallet
 
 # StoreService proto generation
 store:
-	$(PROTOC) -I=$(SERVICES_DIR)/store/protos $(PYTHON_OUT)$(STORE_OUTPUT) $(GRPC_PYTHON_OUT)$(STORE_OUTPUT) $(STORE_PROTO)
+	$(PROTOC) -I=$(SERVICES_DIR)/protos $(PYTHON_OUT)$(STORE_OUTPUT) $(GRPC_PYTHON_OUT)$(STORE_OUTPUT) $(STORE_PROTO)
 
 # WalletService proto generation
 wallet:
-	$(PROTOC) -I=$(SERVICES_DIR)/wallet/protos $(PYTHON_OUT)$(WALLET_OUTPUT) $(GRPC_PYTHON_OUT)$(WALLET_OUTPUT) $(WALLET_PROTO)
+	$(PROTOC) -I=$(SERVICES_DIR)/protos $(PYTHON_OUT)$(WALLET_OUTPUT) $(GRPC_PYTHON_OUT)$(WALLET_OUTPUT) $(WALLET_PROTO)
 
 # Clean generated files
 clean:
@@ -30,8 +30,8 @@ clean:
 
 # Generate stubs in Python
 stubs:
-	$(PROTOC) -I=$(SERVICES_DIR)/store/protos --python_out=$(SERVICES_DIR)/store/protos --grpc_python_out=$(SERVICES_DIR)/store/protos $(STORE_PROTO)
-	$(PROTOC) -I=$(SERVICES_DIR)/wallet/protos --python_out=$(SERVICES_DIR)/wallet/protos --grpc_python_out=$(SERVICES_DIR)/wallet/protos $(WALLET_PROTO)
+	$(PROTOC) -I=$(SERVICES_DIR)/protos --python_out=$(SERVICES_DIR)/protos --grpc_python_out=$(SERVICES_DIR)/protos $(STORE_PROTO)
+	$(PROTOC) -I=$(SERVICES_DIR)/protos --python_out=$(SERVICES_DIR)/protos --grpc_python_out=$(SERVICES_DIR)/protos $(WALLET_PROTO)
 
 # Run server for wallet service
 run_serv_banco: wallet

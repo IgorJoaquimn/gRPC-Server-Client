@@ -33,7 +33,7 @@ class WalletService(WalletService_pb2_grpc.WalletServicer):
 
     def EndExecution(self, request, context):
         # WalletService_pb2.EndExecutionResponse
+        orders_count = len(self.m.orders)
         del self.m
-
         self._stop_event.set()
-        return WalletService_pb2.EndExecutionResponse()
+        return WalletService_pb2.EndExecutionResponse(pending_orders_count =orders_count)

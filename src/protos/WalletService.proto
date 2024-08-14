@@ -57,12 +57,5 @@ message EndExecutionRequest {}
 
 // Response message for EndExecution
 message EndExecutionResponse {
-    repeated WalletBalance wallet_balances = 1;
-    int32 pending_orders_count = 2;
-}
-
-// Message for wallet balances
-message WalletBalance {
-    string wallet = 1;
-    int32 value = 2;
+    int32 pending_orders_count = 1;
 }
