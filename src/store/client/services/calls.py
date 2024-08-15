@@ -61,5 +61,5 @@ def finish_server(store_stub, wallet_stub):
     # Solicita a finalização do servidor da loja
     store_request = StoreService_pb2.EndExecutionRequest()  # Supondo uma solicitação semelhante para a loja
     store_response = store_stub.EndExecution(store_request)
-    print(store_response.status)
+    print(store_response.balance,store_response.status)
     return store_response.status

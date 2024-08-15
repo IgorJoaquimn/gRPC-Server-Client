@@ -26,6 +26,11 @@ class StoreService(StoreService_pb2_grpc.StoreServicer):
         self.my_id = my_id
         self.wallet_addr = wallet_addr
         self.balance = 0  # Saldo interno da conta do vendedor
+        with grpc.insecure_channel(self.wallet_addr) as channel:
+            stub = WalletService_pb2_grpc.WalletStub(channel)
+            request = WalletService_pb2.ReadBalanceRequest(wallet=my_id)
+            response = stub.ReadBalance(request)
+            self.balance = response.value
 
     def ReadPrice(self, request, context):
         """
@@ -58,7 +63,7 @@ class StoreService(StoreService_pb2_grpc.StoreServicer):
             resp = stub.Transfer(req)
         
         # Atualiza o saldo do vendedor se a transferência for bem-sucedida
-        if resp.status > 0:
+        if resp.status == 0:
             self.balance += self.product_price
 
         response = StoreService_pb2.SellResponse(status=resp.status)
